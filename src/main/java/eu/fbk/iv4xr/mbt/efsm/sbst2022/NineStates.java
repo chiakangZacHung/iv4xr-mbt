@@ -1,5 +1,5 @@
 package eu.fbk.iv4xr.mbt.efsm.sbst2022;
-
+import java.lang.Math;
 import eu.fbk.iv4xr.mbt.efsm.EFSM;
 import eu.fbk.iv4xr.mbt.efsm.EFSMBuilder;
 import eu.fbk.iv4xr.mbt.efsm.EFSMContext;
@@ -77,10 +77,17 @@ public class NineStates {
 	public EFSMParameter parGoWest = new EFSMParameter(new Var<Integer>("delta_x", -step), new Var<Integer>("delta_y", 0));
 	
 	// TODO: compute correct delta x and y for diagonal movements
-	public EFSMParameter parGoNorthEast = new EFSMParameter(new Var<Integer>("delta_x", step), new Var<Integer>("delta_y", step));
-	public EFSMParameter parGoSouthEast = new EFSMParameter(new Var<Integer>("delta_x", step), new Var<Integer>("delta_y", -step));
-	public EFSMParameter parGoNorthWest = new EFSMParameter(new Var<Integer>("delta_x", -step), new Var<Integer>("delta_y", step));
-	public EFSMParameter parGoSouthWest = new EFSMParameter(new Var<Integer>("delta_x", -step), new Var<Integer>("delta_y", -step));
+
+	public int num= (int) Math.cos(Math.toRadians(Math.random()*90));
+	public int num1= (int) Math.cos(Math.toRadians(Math.random()*90+90));
+	public int num2= (int) Math.cos(Math.toRadians(Math.random()*90+180));
+	public int num3= (int) Math.cos(Math.toRadians(Math.random()*90+270));
+
+
+	public EFSMParameter parGoNorthEast = new EFSMParameter(new Var<Integer>("delta_x", step*num), new Var<Integer>("delta_y", step));
+	public EFSMParameter parGoSouthEast = new EFSMParameter(new Var<Integer>("delta_x", step*num1), new Var<Integer>("delta_y", -step));
+	public EFSMParameter parGoNorthWest = new EFSMParameter(new Var<Integer>("delta_x", -step*num2), new Var<Integer>("delta_y", step));
+	public EFSMParameter parGoSouthWest = new EFSMParameter(new Var<Integer>("delta_x", -step*num3), new Var<Integer>("delta_y", -step));
 	
 	/*
 	 * Guards
